@@ -1,3 +1,3 @@
 <x-app-layout>
-<livewire:permisologia />
+nada pon en la url /prueba
 </x-app-layout>
