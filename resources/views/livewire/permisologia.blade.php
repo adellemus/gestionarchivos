@@ -15,7 +15,7 @@
             <tr>
                 <td>{{$usuario->name}}</td>
                 <td>{{$usuario->email}}</td>
-                <td>{{$usuario->getRoleNames()}}</td>
+                <td>{{$usuario->getRoleNames()}}<i class="bi bi-4-square-fill"></i></td>
             </tr>
             @endforeach
         </tbody>
