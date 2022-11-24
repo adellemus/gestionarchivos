@@ -13,7 +13,7 @@
     @yield('css')
     @livewireStyles
     <!-- Scripts -->
-    
+
 </head>
 
 <body class="font-sans antialiased">
@@ -26,7 +26,7 @@
         </header>
         <!-- Page Content -->
         <div class=" container mx-auto">
-            <main>
+            <main class=" mt-2">
                 @yield('body')
             </main>
         </div>
