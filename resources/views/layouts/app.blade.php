@@ -16,24 +16,17 @@
 
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @livewire('navigation-dropdown')
-
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-
-        </header>
-        <!-- Page Content -->
-        <div class=" container mx-auto">
-            <main class=" mt-2">
-                @yield('body')
-            </main>
-        </div>
-
-
-    </div>
-
+<body class="font-sans antialiased min-h-screen bg-gray-100">
+    <header>
+       @livewire('navigation-dropdown') 
+    </header>
+    <!-- contenido de la pag -->
+    <main class=" container mx-auto pt-16">
+        @yield('body')
+    </main>
+    <footer>
+        @yield('footer')
+    </footer>
     @stack('modals')
     <script src="{{ mix('js/app.js') }}" defer></script>
     @livewireScripts
