@@ -21,7 +21,7 @@
        @livewire('navigation-dropdown') 
     </header>
     <!-- contenido de la pag -->
-    <main class=" container mx-auto pt-16">
+    <main class="  pt-16">
         @yield('body')
     </main>
     <footer>
