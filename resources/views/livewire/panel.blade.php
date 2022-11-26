@@ -1,5 +1,5 @@
-<div>
-    <nav wire:ignore class="sidebar-navigation">
+<div class=" min-h-screen">
+    <nav wire:ignore class="sidebar-navigation fixed top-16 left-0">
         <ul>
             <li wire:click="$set('vista',1)" class="active">
                 <i class="bi bi-person-circle"></i>
@@ -23,8 +23,8 @@
             </li>
         </ul>
     </nav>
-    <div class="w-full min-h-screen pl-20 ">
-        <div class=" pt-10 pl-10 h-96 ">
+    <div class="w-full pl-20 ">
+        <div class=" pt-10 pl-10 h-full">
             @switch($vista)
                 @case(1)
                     @livewire('control.gestionusuario')

@@ -1,16 +1,12 @@
 //Basics
 * {
-	margin: 0;
-	padding: 0;
+	
 	list-style: none;
-	font-family: 'Lato', sans-serif;
+	
 	line-height: 1;
 }
 
-body {
-	background-color: #F5F6F8;
-	overflow: hidden;
-}
+
 
 //Color Variables
 $sidebar-background-color: #313443;
@@ -20,11 +16,11 @@ $active-link-color: #98D7EC;
 $tooltip-background-color: $sidebar-background-color;
 
 .sidebar-navigation {
-	display: inline-block;
+	
 	min-height: 100vh;
 	width: 80px;
 	background-color: $sidebar-background-color;
-	float: left;
+	
 	
 	ul {
 		text-align: center;
