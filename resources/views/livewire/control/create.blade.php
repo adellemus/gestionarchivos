@@ -1,5 +1,5 @@
 <form wire:submit.prevent="store()">
-<div class="w-2/4 mx-auto">
+<div class="w-5/6 mx-auto">
         <div>
             <x-jet-label for="name" value="{{ __('Name') }}" />
             <x-jet-input wire:model.defer='user.name'  class="block mt-1 w-full" type="text"   />
