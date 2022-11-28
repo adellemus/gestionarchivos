@@ -16,6 +16,7 @@ class Gestionusuario extends Component
     public $roles;
     public $password;
     public $password_confirmation;
+    public $searchUser;
     
     protected $rules=[
         'user.name'=>'required',
@@ -29,7 +30,7 @@ class Gestionusuario extends Component
     
         }
         public function render(){
-            $this->users=user::all();
+            $this->users=user::where('name','like',"%".$this->searchUser."%")->get();
                     return view('livewire.control.gestionusuario');
         }
         public function delete(user $user){
@@ -41,6 +42,7 @@ class Gestionusuario extends Component
             $this->validate();
             $this->user->password=Hash::make($this->password);
             $this->user->save();
+            $this->emit('alert_create');
             $this->resertimput();
 
         }
@@ -55,6 +57,7 @@ class Gestionusuario extends Component
             $this->validate();
             $this->user->password=Hash::make($this->password);
             $this->user->save();
+            $this->emit('alert_update');
             $this->resertimput();
         }
         public function vconfi(user $user){

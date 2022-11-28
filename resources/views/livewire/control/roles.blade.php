@@ -2,8 +2,8 @@
     <div class="w-full text-center font-bold text-lg">{{ $user->name}}({{$user->email}})</div>
     <table class=" table w-full">
         <tr class=" bg-gray-50 border-b table-row border-gray-300">
-            <td class="h-19 table-cell p-5">rol</td>
-            <td class="h-19 table-cell p-5">permisos</td>
+            <td class="h-19 table-cell p-5 ">Rol</td>
+            <td class="h-19 table-cell p-5">Asignar</td>
 
         </tr>
         @foreach ($user->roles as $rol)

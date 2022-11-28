@@ -1,8 +1,8 @@
 <div> 
     <div class=" flex justify-between w-full px-20 mb-5 h-10  " > 
         <h1>Gestion de usuario</h1>
-        <x-jet-button type="button" class="" wire:click="btnagregar()" class="ml-4">
-            {{ __('Agregar usuario') }}
+        <x-jet-button type="button" class="" wire:click="btnagregar()" class="ml-4 text-xl">
+            <i class="bi bi-person-plus"></i>
         </x-jet-button>
         
     </div>
@@ -28,7 +28,19 @@
 
         </div>
         <div id="listado" class=" col-span-4">
-            <div class="grid grid-cols-4 border pb-1/3 border-gray-100 rounded-md w-10/12 mx-auto">
+            <div class="w-10/12 mx-auto mb-2 ">
+                
+                
+                <x-jet-label for="name" value="{{ __('Search') }}" />
+                <div class=" inline-flex">
+                <i class="bi bi-search pt-4 pr-1"></i>
+                <x-jet-input wire:model='searchUser'  class=" mt-1 w-full" type="text"   />
+                </div>
+                
+            </div>
+            <div class=" col-span-3">
+            </div>
+            <div class="grid grid-cols-4 border mb-20 text-xs p-2 border-gray-200 rounded-md w-10/12 mx-auto">
                 <div class="h-19 py-5 font-bold text-md text-gray-800 text-left capitalize pl-2  ">nombre</div>
                 <div class="h-19 py-5 font-bold text-md text-gray-800 text-left capitalize pl-2  ">email</div>
                 <div class="h-19 py-5 font-bold text-md text-gray-800 text-left capitalize pl-2  ">roles</div>
@@ -48,15 +60,31 @@
 
                     </div>
 
-                    <div
-                        class="h-19 py-5 grid grid-cols-4 font-normal text-xl text-gray-800 text-left capitalize pl-2  ">
-                        <i class="cursor-pointer text-red-500 bi bi-trash3"
+                    <div class="h-19 py-5 grid grid-cols-4 font-normal text-xl text-gray-800 text-left capitalize pl-2  ">
+                        <div> 
+                            @if (!$user->hasRole('SuperUsuario'))
+                                <i class="cursor-pointer text-red-500 bi bi-trash3"
                             wire:click="delete('{{ $user->id }}')"></i>
-                        <i class=" cursor-pointer text-green-500 bi bi-pencil"
+                            @else
+                            <i class="bi bi-database-lock"></i>
+                            @endif
+                            
+                        </div>
+                        <div>
+                            <i class=" cursor-pointer text-green-500 bi bi-pencil"
                             wire:click="edit('{{ $user->id }}')"></i>
-                        <i class=" cursor-pointer text-blue-500 bi bi-eye"></i>
-                        <i class=" cursor-pointer text-purple-800 bi bi-gear"
+                        </div>
+                        <div>
+                             <i class=" cursor-pointer text-blue-500 bi bi-eye"></i>
+                            </div>
+                        <div>
+                             <i class=" cursor-pointer text-purple-800 bi bi-gear"
                             wire:click="vconfi('{{ $user->id }}')"></i>
+                        </div>
+                       
+                        
+                       
+                       
                     </div>
                 @endforeach
             </div>
