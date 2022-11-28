@@ -1,4 +1,4 @@
-<nav  x-data="{ open: false }" class="bg-white fixed left-0 w-full z-10  top-0 border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white fixed left-0 w-full z-10  top-0 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,9 +12,12 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('ver_panel')
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @endcan
+                    
                 </div>
             </div>
 
@@ -113,20 +116,19 @@
                     <div class="flex">
                         @auth
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">  
+                                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                                     {{ __('Dashboard') }}
                                 </x-jet-nav-link>
                             </div>
                         @else
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')"> 
+                                <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                                     {{ __('login') }}
                                 </x-jet-nav-link>
                                 @if (Route::has('register'))
-                                <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')"> 
-                                    {{ __('register') }}
-                                </x-jet-nav-link>
-
+                                    <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                                        {{ __('register') }}
+                                    </x-jet-nav-link>
                                 @endif
                             </div>
                         @endauth
