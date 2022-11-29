@@ -36,6 +36,19 @@
 
 
     </div>
+    <div class="my-5 text-sm p-3 text-teal-900">
+        <div class="w-full text-center text-lg font-extrabold"><i class="bi bi-list-check"></i> permisos</div>
+        <div class="ml-2 w-full py-2">
+            <div class="grid grid-rows-4 grid-flow-col gap-1">
+                @foreach ($user->permissions as $item)
+                    <div class="py-2"><i class="bi bi-person-check-fill"></i> {{ $item->name }}</div>
+                @endforeach
+            </div>
+
+        </div>
+
+
+    </div>
 
 
 
