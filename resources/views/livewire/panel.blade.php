@@ -1,15 +1,20 @@
 <div class=" min-h-screen">
     <nav wire:ignore class="sidebar-navigation fixed top-16 left-0">
         <ul>
-            <li wire:click="$set('vista',1)" class="active">
+            @can('panel.user')
+               <li wire:click="$set('vista',1)" class="active">
                 <i class="bi bi-person-circle"></i>
                 <span class="tooltip">Usuarios</span>
-            </li>
+                </li> 
+            @endcan
+            @can('panel.rolyper')
             <li wire:click="$set('vista',2)">
-                <i class="bi bi-hdd"></i>
-                <span class="tooltip">Devices</span>
+                <i class="bi bi-list-check"></i>
+                <span class="tooltip">roles y permisos</span>
             </li>
-            <li wire:click="$set('vista',3)">
+            @endcan
+
+          {{--   <li wire:click="$set('vista',3)">
                 <i class="bi bi-newspaper"></i>
                 <span class="tooltip">Contacts</span>
             </li>
@@ -20,7 +25,7 @@
             <li wire:click="$set('vista',5)">
                 <i class="bi bi-sliders"></i>
                 <span class="tooltip">Settings</span>
-            </li>
+            </li> --}}
         </ul>
     </nav>
     <div class="w-full pl-20 ">
@@ -31,7 +36,7 @@
                 @break
 
                 @case(2)
-                    caso dos
+                    gestion de roles y permisos ---> asignacion de permisos a roles
                 @break
 
                 @case(3)
@@ -44,8 +49,13 @@
 
                 @case(5)
                     caso 5
-                @break-
+                @break
+                @default
+                nada
             @endswitch
+
+           
+
         </div>
 
 

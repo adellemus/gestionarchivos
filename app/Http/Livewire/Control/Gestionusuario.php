@@ -6,18 +6,20 @@ use Livewire\Component;
 use App\Models\user;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Livewire\WithPagination;
 
 class Gestionusuario extends Component
 {
+    use WithPagination;
     public $updateMode = 4;
     public $user;
-    public $users;
     public $rolesall;
+    public $select_rols=[];
     public $roles;
     public $password;
     public $password_confirmation;
     public $searchUser;
-    
+    protected $listeners = ['delete'];
     protected $rules=[
         'user.name'=>'required',
         'user.email'=>'required|email|unique:App\Models\User,email',
@@ -25,13 +27,16 @@ class Gestionusuario extends Component
         'password_confirmation'=>'min:6',
     ];
         public function mount(){
+            
             $this->user=new user();
             $this->rolesall=Role::all();
     
         }
         public function render(){
-            $this->users=user::where('name','like',"%".$this->searchUser."%")->get();
-                    return view('livewire.control.gestionusuario');
+           $users=user::where('name','like',"%".$this->searchUser."%")
+           ->orWhere('email','like',"%".$this->searchUser."%")->paginate(10);
+          
+                    return view('livewire.control.gestionusuario',compact('users'));
         }
         public function delete(user $user){
 
@@ -48,6 +53,7 @@ class Gestionusuario extends Component
         }
         public function edit(user $user){
 
+            $this->resertimput();
             $this->updateMode=2;
             $this->user=$user;
 
@@ -62,6 +68,10 @@ class Gestionusuario extends Component
         }
         public function vconfi(user $user){
             $this->user=$user;
+            $this->select_rols=[];
+            foreach ($user->roles as $value) {
+                $this->select_rols[]=$value->id;
+            }
             $this->updateMode=3;
         }
         public function btnagregar(){
@@ -69,11 +79,20 @@ class Gestionusuario extends Component
             $this->resertimput();
             $this->updateMode=1;
         }
+        public function updatingsearchUser(){
+            $this->resetPage();
+        }
+        public function actualizarroles(){
+
+            $this->user->syncRoles($this->select_rols);
+
+        }
         private function resertimput(){
 
             $this->user=new user();
             $this->password="";
             $this->password_confirmation="";
             $this->updateMode=4;
+            $this->resetValidation();
         }
 }

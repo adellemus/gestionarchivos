@@ -17,17 +17,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::create(['name' => 'SuperUsuario']);
-        $Permission = Permission::create(['name' => 'ver_panel']);
+        $role1 = Role::create(['name' => 'SuperUsuario']);
+        $role2 = Role::create(['name' => 'admin']);
+        $role3 = Role::create(['name' => 'HHRR']);
+        $Permission1 = Permission::create(['name' => 'panel.link'])->assignRole($role3,$role2);//linl de panel o dasboart
+        $Permission2 = Permission::create(['name' => 'panel.user'])->assignRole($role3);//link de usuarios en panel
+        $Permission4 = Permission::create(['name' => 'user.create'])->assignRole($role3);//crear usuario
+        $Permission5 = Permission::create(['name' => 'user.update'])->assignRole($role3);//actualizar usuario
+        $Permission6 = Permission::create(['name' => 'user.delete'])->assignRole($role3);//eliminar usuario
+        $Permission3 = Permission::create(['name' => 'panel.rolyper'])->assignRole($role2);//link de roles y permisos en panel
+        
+
         $SuperUsuario=new user();
         $SuperUsuario->name='admin';
         $SuperUsuario->email="admin@admin.com";
         $SuperUsuario->password=Hash::make('admin');
         $SuperUsuario->save();
-        $role->givePermissionTo('ver_panel');
-        $SuperUsuario->givePermissionTo('ver_panel');
         $SuperUsuario->assignRole('SuperUsuario');
-         \App\Models\User::factory(20)->create();
+         \App\Models\User::factory(100)->create();
         
     }
 }
