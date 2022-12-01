@@ -94,8 +94,12 @@
                         </div>
                         
                         <div>
+                            @can('user.modfi.vista')
                             <i class=" cursor-pointer text-purple-800 bi bi-gear"
                                 wire:click="vconfi('{{ $user->id }}')"></i>
+                            @else
+                            <i class="bi bi-database-lock"></i>
+                            @endcan
                         </div>
 
 

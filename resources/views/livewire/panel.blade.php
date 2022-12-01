@@ -36,7 +36,7 @@
                 @break
 
                 @case(2)
-                    gestion de roles y permisos ---> asignacion de permisos a roles
+                    @livewire('control.gestionrolpermisos')
                 @break
 
                 @case(3)

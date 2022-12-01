@@ -20,12 +20,19 @@ class DatabaseSeeder extends Seeder
         $role1 = Role::create(['name' => 'SuperUsuario']);
         $role2 = Role::create(['name' => 'admin']);
         $role3 = Role::create(['name' => 'HHRR']);
-        $Permission1 = Permission::create(['name' => 'panel.link'])->assignRole($role3,$role2);//linl de panel o dasboart
-        $Permission2 = Permission::create(['name' => 'panel.user'])->assignRole($role3);//link de usuarios en panel
-        $Permission4 = Permission::create(['name' => 'user.create'])->assignRole($role3);//crear usuario
-        $Permission5 = Permission::create(['name' => 'user.update'])->assignRole($role3);//actualizar usuario
-        $Permission6 = Permission::create(['name' => 'user.delete'])->assignRole($role3);//eliminar usuario
-        $Permission3 = Permission::create(['name' => 'panel.rolyper'])->assignRole($role2);//link de roles y permisos en panel
+
+        //barra de navegacion
+        $Permission1 = Permission::create(['name' => 'nav.link.panel','descrip'=>'panel','seccion'=>'nav'])->assignRole($role3,$role2);//linl de panel o dasboart
+        //user
+        $Permission2 = Permission::create(['name' => 'panel.user','descrip'=>'Gestionar usuario','seccion'=>'panel'])->assignRole($role3);//link de usuarios en panel
+        $Permission4 = Permission::create(['name' => 'user.create','descrip'=>'crear usuario','seccion'=>'user'])->assignRole($role3);//crear usuario
+        $Permission5 = Permission::create(['name' => 'user.update','descrip'=>'actializar usuario','seccion'=>'user'])->assignRole($role3);//actualizar usuario
+        $Permission6 = Permission::create(['name' => 'user.delete','descrip'=>'eliminar usuario','seccion'=>'user'])->assignRole($role3);//eliminar usuario
+        $Permission6 = Permission::create(['name' => 'user.modfi.vista','descrip'=>'ver roles y permisos','seccion'=>'user'])->assignRole($role3);//eliminar usuario
+        $Permission6 = Permission::create(['name' => 'user.asignar.roles','descrip'=>'asignar roles a usuarios','seccion'=>'user'])->assignRole($role3);//eliminar usuario
+        $Permission6 = Permission::create(['name' => 'user.asifnar.permisos','descrip'=>'asignar permisos a usuarios','seccion'=>'user'])->assignRole($role3);//eliminar usuario
+        //panel
+        $Permission3 = Permission::create(['name' => 'panel.rolyper','descrip'=>'link de roles y permisos en panel','seccion'=>'panel'])->assignRole($role2);//link de roles y permisos en panel
         
 
         $SuperUsuario=new user();
@@ -34,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $SuperUsuario->password=Hash::make('admin');
         $SuperUsuario->save();
         $SuperUsuario->assignRole('SuperUsuario');
-         \App\Models\User::factory(100)->create();
+         \App\Models\User::factory(50)->create();
         
     }
 }

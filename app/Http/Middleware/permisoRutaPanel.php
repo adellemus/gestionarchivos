@@ -17,7 +17,7 @@ class permisoRutaPanel
     public function handle(Request $request, Closure $next)
     {
 
-        if (Auth::user()->can('panel.link')) {
+        if (Auth::user()->can('nav.link.panel')) {
            return $next($request);
         }
         return abort(403);

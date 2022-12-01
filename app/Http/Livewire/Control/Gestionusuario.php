@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\user;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Livewire\WithPagination;
 
 class Gestionusuario extends Component
@@ -15,6 +16,9 @@ class Gestionusuario extends Component
     public $user;
     public $rolesall;
     public $select_rols=[];
+    public $allpermisos;
+    public $select_permisos=[]; 
+    public $permisosdirectos;
     public $roles;
     public $password;
     public $password_confirmation;
@@ -30,9 +34,13 @@ class Gestionusuario extends Component
             
             $this->user=new user();
             $this->rolesall=Role::all();
+            $this->allpermisos=permission::all(); 
+
+
     
         }
         public function render(){
+            $this->permisosdirectos=$this->allpermisos->diff($this->user->getPermissionsViaRoles());
            $users=user::where('name','like',"%".$this->searchUser."%")
            ->orWhere('email','like',"%".$this->searchUser."%")->paginate(10);
           
@@ -69,9 +77,17 @@ class Gestionusuario extends Component
         public function vconfi(user $user){
             $this->user=$user;
             $this->select_rols=[];
+            $this->select_permisos=[]; 
+
             foreach ($user->roles as $value) {
                 $this->select_rols[]=$value->id;
             }
+            foreach ($user->permissions as $value) {
+                $this->select_permisos[]=$value->id;
+            }
+
+            
+
             $this->updateMode=3;
         }
         public function btnagregar(){
@@ -86,6 +102,10 @@ class Gestionusuario extends Component
 
             $this->user->syncRoles($this->select_rols);
 
+        }
+        public function actualizapermisos(){
+            $this->user->syncPermissions($this->select_permisos);
+            
         }
         private function resertimput(){
 
