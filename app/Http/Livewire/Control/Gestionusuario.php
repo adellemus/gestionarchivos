@@ -101,10 +101,11 @@ class Gestionusuario extends Component
         public function actualizarroles(){
 
             $this->user->syncRoles($this->select_rols);
-
+            $this->emit('alert_asig');
         }
         public function actualizapermisos(){
             $this->user->syncPermissions($this->select_permisos);
+            $this->emit('alert_asig');
             
         }
         private function resertimput(){

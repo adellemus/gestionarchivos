@@ -33,9 +33,9 @@
     <div class="my-5 text-sm p-3 text-teal-900">
         <div class="w-full text-center text-lg font-extrabold"><i class="bi bi-list-check"></i> permisos via roles</div>
         <div class="ml-2 w-full py-2">
-            <div class="grid grid-cols-2  gap-1">
+            
                 @foreach ($user->getPermissionsViaRoles()->pluck('seccion')->unique() as $seccion)
-                    <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">{{$seccion}}
+                    <div class="text-left font-extrabold border-b border-gray-200   ">{{$seccion}}
                     </div>
                     @foreach ($user->getPermissionsViaRoles()->unique('id')->where('seccion', '=', $seccion) as $item)
                         <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}</div>
@@ -43,7 +43,7 @@
                         @endforeach
                
 
-            </div>
+            
 
         </div>
 
@@ -52,10 +52,10 @@
     <div class="my-5 text-sm p-3 text-teal-900">
         <div class="w-full text-center text-lg font-extrabold"><i class="bi bi-list-check"></i> permisos directos</div>
         <div class="ml-2 w-full py-2">
-            <div class="grid grid-cols-2  gap-1">
+            
 
                 @foreach ($permisosdirectos->pluck('seccion')->unique() as $seccion)
-                    <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">{{ $seccion }}
+                    <div class="  text-left font-extrabold border-b border-gray-200   ">{{ $seccion }}
                     </div>
                     @foreach ($permisosdirectos->where('seccion', '=', $seccion) as $item)
                         <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}
@@ -70,7 +70,7 @@
                 @endforeach
 
 
-            </div>
+            
 
         </div>
 

@@ -19,20 +19,26 @@
             <div class="grid grid-cols-2 gap-5">
                 <div class=" min-h-56 p-5 border border-gray-200 rounded-xl">
                     @foreach ($allroles as $rol)
-                        <div class="w-full h-8 p-2 rounded-2xl my-2 cursor-pointer">
-                            <div wire:click="delete('{{$rol->id}}')" class=" inline-block py-1 px-1 text-red-900 hover:bg-red-100 bg-red-200 rounded-md border border-red-200 ">
-                                <i class="bi bi-trash3"></i></div>
+                        <div class="w-full h-8 p-2 rounded-2xl my-2 ">
+                             @can('rolyper.eliminar.rol') 
+                            <div wire:click="$emit('eliminar_rol','{{$rol->id}}')" class="cursor-pointer inline-block py-1 px-1 text-red-900 hover:bg-red-100 bg-red-200 rounded-md border border-red-200 ">
+                                 <i class="bi bi-trash3"></i>
+                            </div>
+                            @else
+                            <div  class=" inline-block py-1 px-1 rounded-md border border-gray-200 ">
+                                <i class="bi bi-arrow-right"></i>
+                           </div>
+                            @endcan
+                            
                             <div wire:click="edit('{{$rol->id}}')" 
-                            class=" inline-block capitalize  ">{{ $rol->name }}</div>
-                            <div class=" inline-block"><i class="bi bi-chevron-double-right"></i></div>
+                            class=" inline-block capitalize cursor-pointer ">{{ $rol->name }}</div>
+                            <div class=" inline-block "><i class="bi bi-chevron-double-right"></i></div>
 
 
                         </div>
                     @endforeach
                 </div>
                 @if ($rol_select->name)
-             
-               
                 <div class=" min-h-56 p-5 border border-gray-200 rounded-xl">
                     <div class="w-full text-2xl text-center text-gray-800" >
                         @if ($rol_select)
@@ -47,7 +53,12 @@
                     </div>
                     @foreach ($allpermisos->where('seccion','=',$permisoss) as $permiso)
                         <div class="capitalize w-full h-8 p-2 rounded-2xl my-2 bg-blue-200 text-blue-900">
-                            {{ $permiso->descrip }} <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox">
+                            {{ $permiso->descrip }} 
+                            @can('rolyper.asig.permiso')
+                            <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox">
+                            @else
+                            <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox" disabled>
+                            @endcan
                         </div>
                         @endforeach 
                    
@@ -56,10 +67,12 @@
 
                    
 
-
+                    @can('rolyper.asig.permiso')
                     <x-jet-button class="mt-5 mx-auto" wire:click='actualizapermisos'>
                         {{ __('Actualizar') }}
                     </x-jet-button>
+                    @endcan
+
                 </div>
                 @endif
             </div>

@@ -24,10 +24,30 @@ Livewire.on('alert_create', etc3 => {
 	})
 
 });
+Livewire.on('alert_create_rol', etc3 => {
+	Swal.fire({
+		position: 'center',
+		icon: 'success',
+		title: 'Rol creado correctamente',
+		showConfirmButton: false,
+		timer: 1500
+	})
+
+});
+Livewire.on('alert_asig', etc3 => {
+	Swal.fire({
+		position: 'center',
+		icon: 'success',
+		title: 'Permisologia actualizada correctamente',
+		showConfirmButton: false,
+		timer: 1500
+	})
+
+});
 Livewire.on('eliminar', id => {
 Swal.fire({
-	title: 'Are you sure?',
-	text: "You won't be able to revert this!",
+	title: 'Estas seguro?',
+	text: "No podrar revertir esta accion!",
 	icon: 'warning',
 	showCancelButton: true,
 	confirmButtonColor: '#3085d6',
@@ -39,8 +59,8 @@ Swal.fire({
 		Livewire.emitTo('control.gestionusuario', 'delete', id);
 
 	  Swal.fire(
-		'Deleted!',
-		'Your file has been deleted.',
+		'Eliminado!',
+		'el usuario fue eliminado',
 		'success'
 	  )
 	}
@@ -48,5 +68,29 @@ Swal.fire({
 
 
 });
+Livewire.on('eliminar_rol', id => {
+	Swal.fire({
+		title: 'Estas seguro?',
+		text: "No podrar revertir esta accion!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Yes, delete it!'
+	  }).then((result) => {
+		if (result.isConfirmed) {
+	
+			Livewire.emitTo('control.gestionrolpermisos', 'delete', id);
+	
+		  Swal.fire(
+			'Eliminado!',
+			'el rol fue eliminado',
+			'success'
+		  )
+		}
+	  })
+	
+	
+	});
 };
 

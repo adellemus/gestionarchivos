@@ -15,7 +15,7 @@ class Gestionrolpermisos extends Component
     public $rol;
     public $rol_select;
     public $select_permisos=[];
-
+    protected $listeners = ['delete'];
     protected $rules=[
         'rol.name'=>'required|unique:Spatie\Permission\Models\Role,name',
     ];
@@ -36,6 +36,7 @@ class Gestionrolpermisos extends Component
         $this->rol->guard_name='web';
         $this->rol->save();
         $this->rol=new role();
+        $this->emit('alert_create_rol');
     }
     public function delete(role $rol){
        
@@ -54,6 +55,7 @@ class Gestionrolpermisos extends Component
     public function actualizapermisos(){
 
         $this->rol_select->syncPermissions($this->select_permisos);
+        $this->emit('alert_asig');
 
     }
 }
