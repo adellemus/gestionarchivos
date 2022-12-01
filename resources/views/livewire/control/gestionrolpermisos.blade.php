@@ -40,33 +40,20 @@
                        @endif
                     </div>
                    
-                    @if ($allpermisos->where('seccion','=','nav')->count() > 0)
-                    <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">barra de navegacion
+
+                    @foreach ($allpermisos->pluck('seccion')->unique() as $key => $permisoss)
+                   
+                     <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">{{$permisoss}}
                     </div>
-                       @foreach ($allpermisos->where('seccion','=','nav') as $permiso)
+                    @foreach ($allpermisos->where('seccion','=',$permisoss) as $permiso)
                         <div class="capitalize w-full h-8 p-2 rounded-2xl my-2 bg-blue-200 text-blue-900">
                             {{ $permiso->descrip }} <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox">
                         </div>
-                    @endforeach  
-                    @endif
-                    @if ($allpermisos->where('seccion','=','panel')->count() > 0)
-                    <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">Panel de control
-                    </div>
-                       @foreach ($allpermisos->where('seccion','=','panel') as $permiso)
-                        <div class="capitalize w-full h-8 p-2 rounded-2xl my-2 bg-blue-200 text-blue-900">
-                            {{ $permiso->descrip }} <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox">
-                        </div>
-                    @endforeach  
-                    @endif
-                    @if ($allpermisos->where('seccion','=','user')->count() > 0)
-                    <div class=" col-span-2 text-left font-extrabold border-b border-gray-200   ">vista usuario
-                    </div>
-                       @foreach ($allpermisos->where('seccion','=','user') as $permiso)
-                        <div class="capitalize w-full h-8 p-2 rounded-2xl my-2 bg-blue-200 text-blue-900">
-                            {{ $permiso->descrip }} <input wire:model='select_permisos' value="{{ $permiso->id }}" type="checkbox">
-                        </div>
-                    @endforeach  
-                    @endif
+                        @endforeach 
+                   
+                   
+                    @endforeach     
+
                    
 
 
