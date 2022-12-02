@@ -40,7 +40,7 @@
                 @break
 
                 @case(3)
-                    caso 3
+                @livewire('control.gestionrolpermisos')
                 @break
 
                 @case(4)
