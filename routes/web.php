@@ -12,17 +12,20 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//pagina principal
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
+//---------------------------------------------------------------
+//prubas 
 Route::get('/pruebas', function () {
     
 dd(Storage::disk());
 
-})->name('permisos');
-
+})->name('pruebas');
+//----------------------------------
+//dashboard o panel (protegida por autentificacion y permisos)
 Route::middleware(['auth:sanctum', 'verified','ver_panel'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+//---------------------------------------
