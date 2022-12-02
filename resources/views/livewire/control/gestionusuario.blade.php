@@ -15,19 +15,19 @@
 
             @switch($updateMode)
                 @case(1)
-                    @include('livewire.control.create')
+                    @include('livewire.control.usuario.create')
                 @break
 
                 @case(2)
-                    @include('livewire.control.update')
+                    @include('livewire.control.usuario.update')
                 @break
 
                 @case(3)
-                    @include('livewire.control.roles')
+                    @include('livewire.control.usuario.roles')
                 @break
 
                 @case(4)
-                    @include('livewire.control.img')
+                    @include('livewire.control.usuario.img')
                 @break
 
                 @default
