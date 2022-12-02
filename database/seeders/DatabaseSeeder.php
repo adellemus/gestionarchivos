@@ -24,8 +24,9 @@ class DatabaseSeeder extends Seeder
         //barra de navegacion
         $Permission1 = Permission::create(['name' => 'nav.link.panel','descrip'=>'panel','seccion'=>'Barra de navegacion'])->assignRole($role3,$role2);//linl de panel o dasboart
         //panel
-        $Permission3 = Permission::create(['name' => 'panel.rolyper','descrip'=>'Gestionar roles y permisos','seccion'=>'Panel de Control'])->assignRole($role2);//link de roles y permisos en panel
         $Permission2 = Permission::create(['name' => 'panel.user','descrip'=>'Gestionar usuario','seccion'=>'Panel de Control'])->assignRole($role3);//link de usuarios en panel
+        $Permission3 = Permission::create(['name' => 'panel.rolyper','descrip'=>'Gestionar roles y permisos','seccion'=>'Panel de Control'])->assignRole($role2);//link de roles y permisos en panel
+        $Permission3 = Permission::create(['name' => 'panel.archivos','descrip'=>'Gestionar Archivos','seccion'=>'archivos'])->assignRole($role2);//link de archivos en el panel en panel
         //user
         $Permission4 = Permission::create(['name' => 'user.create','descrip'=>'crear usuario','seccion'=>'Vista de usuario'])->assignRole($role3);//crear usuario
         $Permission5 = Permission::create(['name' => 'user.update','descrip'=>'actializar usuario','seccion'=>'Vista de usuario'])->assignRole($role3);//actualizar usuario
