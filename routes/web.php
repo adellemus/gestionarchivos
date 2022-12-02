@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,9 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/pruebas', function () {
-    return view('permisologia.index');
+    
+dd(Storage::disk());
+
 })->name('permisos');
 
 Route::middleware(['auth:sanctum', 'verified','ver_panel'])->get('/dashboard', function () {
