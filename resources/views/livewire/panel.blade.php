@@ -53,11 +53,8 @@
                 @break
 
                 @default
-                    <div
-                        class="w-10/12 mx-auto flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center  sm:pt-0">
-
-
-                        <div class=" mx-auto sm:px-6 lg:px-8 p-5">
+                    
+                        <div class="w-10/12  mx-auto sm:px-6 lg:px-8 p-5">
 
                             <div class="w-full text-3xl text-center font-bold">
                                 Software de gestión documental
@@ -98,7 +95,7 @@
 
 
                         </div>
-                    </div>
+                    
             @endswitch
 
 
