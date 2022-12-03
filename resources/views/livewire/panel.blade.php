@@ -1,5 +1,5 @@
-<div class=" min-h-screen">
-    <nav wire:ignore class="sidebar-navigation fixed top-16 left-0">
+<div class="">
+    <nav wire:ignore class="sidebar-navigation fixed top-16 left-0 ">
         <ul>
             @can('panel.user')
                <li wire:click="$set('vista',1)" class="active">
@@ -28,7 +28,7 @@
             </li> --}}
         </ul>
     </nav>
-    <div class="w-full pl-20 ">
+    <div class="w-full pl-20  pb-5">
         <div class=" pt-10 pl-10 h-full">
             @switch($vista)
                 @case(1)
@@ -51,10 +51,10 @@
                     caso 5
                 @break
                 @default
-                <div class="w-10/12 mx-auto flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center  sm:pt-0">
+             
 
 
-                    <div class=" mx-auto sm:px-6 lg:px-8 p-5">
+                    <div class="w-10/12  mx-auto sm:px-6 lg:px-8 p-5">
             
                         <div class="w-full text-3xl text-center font-bold">
                             Software de gestión documental
@@ -88,7 +88,7 @@
             
             
                     </div>
-                </div>
+                
             @endswitch
 
            
