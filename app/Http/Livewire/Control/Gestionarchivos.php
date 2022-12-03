@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Control;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
+
 
 class Gestionarchivos extends Component
 {

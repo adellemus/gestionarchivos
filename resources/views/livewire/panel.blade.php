@@ -30,7 +30,7 @@
         </ul>
     </nav>
     <div class="w-full pl-20  pb-5">
-        <div class=" pt-10 pl-10 h-full">
+        <div class=" pt-10 h-full">
             @switch($vista)
                 @case(1)
                     @livewire('control.gestionusuario')
