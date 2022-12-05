@@ -3,25 +3,44 @@
     <div class=" w-full flex justify-between ">
         <h1>Gerstion de archivos y carpetas</h1>
         <div class="grid grid-cols-2 gap-5 text-2xl text-blue-500 ">
-            <div><i
+            <div><i wire:click="$set('accion','1')"
                     class="bi bi-folder-plus hover:text-white cursor-pointer bg-blue-200 rounded-md px-1 hover:bg-blue-500 border border-blue-400 "></i>
             </div>
-            <div><i
+            <div><i wire:click="$set('accion','2')"
                     class="bi bi-journal-plus hover:text-white cursor-pointer bg-blue-200 rounded-md px-1 hover:bg-blue-500 border border-blue-400"></i>
             </div>
         </div>
     </div>
-    @include('livewire.control.archivo.create')
-    <div class="mt-3 h-96 p-2 rounded-md border flex gap-7 top-5 border-gray-100 w-full ">
+    <div class="my-5 h-28 border border-gray-200 ">
+        @switch($accion)
+            @case(1)
+            @include('livewire.control.archivo.create-archivo')  
+                @break
+            @case(2)
+            @include('livewire.control.archivo.create-archivo')  
+                @break
+            @default
+                formilarios
+        @endswitch   
+       
+    </div>
+   
+    
+    <div class="mt-3  p-2 rounded-md border  gap-1 top-5 border-gray-100 grid grid-cols-12 ">
 
         @foreach ($archivos as $iten)
-            <div class=" h-16 w-16 border border-gray-300 rounded-md pt-2">
+            <div class=" h-24  border border-gray-300 rounded-md pt-2">
+                @if ($iten->extencion=='jpg' )
+                <img src="{{asset($iten->url)}}" alt="">
+                @else  
                 <div class="block text-4xl relative text-center">
                     <i class="bi bi-filetype-{{$iten->extencion}}"></i>
                 </div>
                 <div class="text-center text-xs truncate">
                     {{ $iten->name }}
                 </div>
+                @endif
+                
 
 
             </div>

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class archivo extends Model
 {
+
     use HasFactory;
+    protected $fillable = ['url','name','extencion'];
 }
