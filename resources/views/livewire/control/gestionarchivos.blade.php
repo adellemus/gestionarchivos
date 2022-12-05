@@ -1,6 +1,13 @@
 <div class="w-10/12 mx-auto">
     <div class="w-full text-3xl text-center font-bold">Documentos</div>
-    <div class="mt-3 h-96 p-2 rounded-md border flex gap-7 items-center border-gray-100 w-full ">
+    <div class=" w-full flex justify-between ">
+     <h1>Gerstion de archivos y carpetas</h1>
+     <div class="grid grid-cols-2 gap-5 text-2xl text-blue-500 ">
+        <div><i class="bi bi-folder-plus hover:text-white cursor-pointer bg-blue-200 rounded-md px-1 hover:bg-blue-500 border border-blue-400 "></i></div>
+        <div><i class="bi bi-journal-plus hover:text-white cursor-pointer bg-blue-200 rounded-md px-1 hover:bg-blue-500 border border-blue-400"></i></div>    
+    </div>   
+    </div>
+    <div class="mt-3 h-96 p-2 rounded-md border flex gap-7 top-5 border-gray-100 w-full ">
 
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-folder2" viewBox="0 0 16 16">
