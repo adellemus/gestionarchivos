@@ -16,10 +16,10 @@ class CreateArchivosTable extends Migration
         Schema::create('archivos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('categoria_id');
+          
             $table->string('url');
             $table->string('extencion');
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
+           
             $table->timestamps();
         });
     }
