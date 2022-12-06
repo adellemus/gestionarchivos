@@ -12,16 +12,20 @@ use App\models\categoria;
 class Gestionarchivos extends Component
 {
     use WithFileUploads;
+    public $vista=0;
     public $archivo;
     public $archivos;
     public $accion=0;
+    public $categorias;
+    public $categoria_select;
     protected $rules = [ 
+        'categoria_select'=>'required',
         'archivo' => 'required', 
     ];
     public function render()
     {
         $this->archivos=archivo::all();
-        $this->categoria=categoria::all();
+        $this->categorias=categoria::all();
         return view('livewire.control.gestionarchivos');
     }
     public function save()

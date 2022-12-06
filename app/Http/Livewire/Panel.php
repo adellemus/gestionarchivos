@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Panel extends Component
 {
-    public $vista;
+    public $vista=3;
 
     public function render()
     {

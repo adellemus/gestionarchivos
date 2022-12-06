@@ -2,7 +2,7 @@
     <nav wire:ignore class="sidebar-navigation fixed top-16 left-0 ">
         <ul>
             @can('panel.user')
-                <li wire:click="$set('vista',1)" class="active">
+                <li wire:click="$set('vista',1)" >
                     <i class="bi bi-person-circle"></i>
                     <span class="tooltip">Usuarios</span>
                 </li>
