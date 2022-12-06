@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="">
     <div class="w-full text-base text-center text-red-400" wire:loading wire:target='save,archivo'>cargando</div>
 
     <x-jet-label> Categoria </x-jet-label>

@@ -1,6 +1,6 @@
 <div class="w-10/12 mx-auto">
     <div class="w-full text-3xl text-center font-bold">Documentos</div>
-    <div class=" w-full flex justify-between ">
+    <div class=" w-full flex justify-between mb-7 ">
         <h1>Gerstion de archivos y carpetas</h1>
         <div class="grid grid-cols-2 gap-5 text-2xl text-blue-500 ">
             <div><i wire:click="$set('accion','1')"
@@ -12,9 +12,9 @@
         </div>
     </div>
 
-    <div class="w-full grid grid-cols-12 ">
-        <div class=" col-span-4">
-            <div class="my-5 border h-40 p-5 border-gray-200 ">
+    <div class="w-full gap-3 grid grid-cols-12 ">
+        <div class=" col-span-4  border rounded-md border-gray-200">
+            <div class="my-5  h-56 p-5 ">
                 @switch($accion)
                     @case(1)
                         @include('livewire.control.archivo.create-archivo')
@@ -30,7 +30,7 @@
 
             </div>
         </div>
-        <div class=" col-span-8">
+        <div class=" col-span-8 border rounded-md border-gray-200 ">
             @if ($vista==0)
             @include('livewire.control.archivo.vista-cuadro')
             @else 
