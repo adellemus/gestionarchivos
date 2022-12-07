@@ -1,5 +1,5 @@
 <div class=" flex p-2 w-full">
-    <x-laravel-blade-sortable::sortable class="border w-1/2 flex flex-wrap  border-gray-300" name="carpeta 1">
+    <x-laravel-blade-sortable::sortable class=" w-1/2 flex flex-wrap" name="carpeta 1">
         @foreach ($archivos as $iten)
             @can($iten->nombre_permiso)
                 <x-laravel-blade-sortable::sortable-item class="p-2 w-24 border h-16  border-gray-300 rounded-md pt-2"
@@ -24,7 +24,7 @@
     </x-laravel-blade-sortable::sortable >
 
 
-    
-    <x-laravel-blade-sortable::sortable class="border w-1/2 flex flex-wrap  border-gray-300">
+
+    <x-laravel-blade-sortable::sortable class=" w-1/2 flex flex-wrap ">
     </x-laravel-blade-sortable::sortable>
 </div>
