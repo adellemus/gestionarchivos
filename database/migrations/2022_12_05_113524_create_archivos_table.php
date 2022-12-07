@@ -16,7 +16,7 @@ class CreateArchivosTable extends Migration
         Schema::create('archivos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-          
+            $table->string('nombre_permiso');
             $table->string('url');
             $table->string('extencion');
            
