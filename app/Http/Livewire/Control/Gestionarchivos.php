@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use App\models\archivo;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 
@@ -13,11 +14,11 @@ use Spatie\Permission\Models\Permission;
 class Gestionarchivos extends Component
 {
     use WithFileUploads;
-    public $vista=0;
+    
     public $archivo;
     public $archivos;
     public $accion=0;
-    public $categorias;
+    public $roles;
     public $categoria_select;
     protected $rules = [ 
         
@@ -26,7 +27,7 @@ class Gestionarchivos extends Component
     public function render()
     {
         $this->archivos=archivo::all();
-        
+        $this->roles=role::where('name','!=','SuperUsuario')->get();
         return view('livewire.control.gestionarchivos');
     }
     public function save()
@@ -47,14 +48,27 @@ class Gestionarchivos extends Component
        
 
     }
-/*         public function cambio($sortOrder, $previousSortOrder, $name, $from, $to)
+     public function cambio($sortOrder, $previousSortOrder, $name, $from, $to)
     {
 
+       if ($from!=$to) {
+        
+       
 
+        $archivosmovidos=archivo::find($sortOrder);
+        foreach ($archivosmovidos as  $archivo) {
+
+        }
+
+
+
+        }else{
+            $this->archivos=archivo::find($sortOrder);
+        }
         // $sortOrder = elementos del contenedor
         // $previousSortOrder = keys previous order
         // $name = drop target name
         // $from =nombre del contenedor
         // $to = name of drop target to where the dragged/sorted item was placed
-    } */
+    } 
 }
