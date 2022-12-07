@@ -33,17 +33,17 @@
     <div class="my-5 text-sm p-3 text-teal-900">
         <div class="w-full text-center text-lg font-extrabold"><i class="bi bi-list-check"></i> permisos via roles</div>
         <div class="ml-2 w-full py-2">
-            
-                @foreach ($user->getPermissionsViaRoles()->pluck('seccion')->unique() as $seccion)
-                    <div class="text-left font-extrabold border-b border-gray-200   ">{{$seccion}}
-                    </div>
-                    @foreach ($user->getPermissionsViaRoles()->unique('id')->where('seccion', '=', $seccion) as $item)
-                        <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}</div>
-                        @endforeach
-                        @endforeach
-               
 
-            
+            @foreach ($user->getPermissionsViaRoles()->where('tipo','=','config')->pluck('seccion')->unique() as $seccion)
+                <div class="text-left font-extrabold border-b border-gray-200   ">{{ $seccion }}
+                </div>
+                @foreach ($user->getPermissionsViaRoles()->unique('id')->where('seccion', '=', $seccion) as $item)
+                    <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}</div>
+                @endforeach
+            @endforeach
+
+
+
 
         </div>
 
@@ -52,25 +52,24 @@
     <div class="my-5 text-sm p-3 text-teal-900">
         <div class="w-full text-center text-lg font-extrabold"><i class="bi bi-list-check"></i> permisos directos</div>
         <div class="ml-2 w-full py-2">
-            
 
-                @foreach ($permisosdirectos->pluck('seccion')->unique() as $seccion)
-                    <div class="  text-left font-extrabold border-b border-gray-200   ">{{ $seccion }}
+
+            @foreach ($permisosdirectos->pluck('seccion')->unique() as $seccion)
+                <div class="  text-left font-extrabold border-b border-gray-200   ">{{ $seccion }}
+                </div>
+                @foreach ($permisosdirectos->where('seccion', '=', $seccion) as $item)
+                    <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}
+                        @can('user.asifnar.permisos')
+                            <input wire:model.defer='select_permisos' value="{{ $item->id }}" type="checkbox">
+                        @else
+                            <input wire:model.defer='select_permisos' value="{{ $item->id }}" type="checkbox" disabled>
+                        @endcan
                     </div>
-                    @foreach ($permisosdirectos->where('seccion', '=', $seccion) as $item)
-                        <div class="py-2 pl-5"><i class="bi bi-person-check-fill"></i> {{ $item->descrip }}
-                            @can('user.asifnar.permisos')
-                                <input wire:model.defer='select_permisos' value="{{ $item->id }}" type="checkbox">
-                            @else
-                                <input wire:model.defer='select_permisos' value="{{ $item->id }}" type="checkbox"
-                                    disabled>
-                            @endcan
-                        </div>
-                    @endforeach
                 @endforeach
+            @endforeach
 
 
-            
+
 
         </div>
 

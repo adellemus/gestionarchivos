@@ -34,7 +34,7 @@ class Gestionusuario extends Component
             
             $this->user=new user();
             $this->rolesall=Role::all();
-            $this->allpermisos=permission::all(); 
+            $this->allpermisos=permission::where('tipo','=','config')->get();
 
 
     
