@@ -39,10 +39,12 @@ class Gestionarchivos extends Component
         $file->name=$this->archivo->getClientOriginalName();
         $file->extencion=$this->archivo->getClientOriginalExtension();
         $file->nombre_permiso=uniqid('archivo-');
+        $file->user_id=auth()->user()->id;
         $file->save();
         $permission=Permission::create(['tipo'=>'archivo','guard_name'=>'web','name' =>$file->nombre_permiso ,'descrip'=>'','seccion'=>'']);
         auth()->user()->givePermissionTo($permission);
         
+       
 
     }
 /*         public function cambio($sortOrder, $previousSortOrder, $name, $from, $to)
