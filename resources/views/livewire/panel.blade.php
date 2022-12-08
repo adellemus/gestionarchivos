@@ -13,8 +13,14 @@
                     <span class="tooltip">roles y permisos</span>
                 </li>
             @endcan
-            @can('panel.archivos')
+            @can('panel.dep_categoria')
                 <li wire:click="$set('vista',3)">
+                    <i class="bi bi-tag"></i>
+                    <span class="tooltip">Departamentos y Categorias</span>
+                </li>
+            @endcan
+            @can('panel.archivos')
+                <li wire:click="$set('vista',4)">
                     <i class="bi bi-filetype-pdf"></i>
                     <span class="tooltip">archivos</span>
                 </li>
@@ -41,11 +47,11 @@
                 @break
 
                 @case(3)
-                    @livewire('control.gestionarchivos')
+                @livewire('control.gestiondeparcategory')
                 @break
 
                 @case(4)
-                    caso 4
+                     @livewire('control.gestionarchivos')
                 @break
 
                 @case(5)

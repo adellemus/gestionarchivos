@@ -37,7 +37,7 @@ class Gestionarchivos extends Component
         $file->url= 'storage/'.$this->archivo->store('archivos','public'); 
         $file->name=$this->archivo->getClientOriginalName();
         $file->extencion=$this->archivo->getClientOriginalExtension();
-        $file->categoria_id='1';
+        $file->categoria_id=$this->categoria_select;
         $file->save();
 
         
