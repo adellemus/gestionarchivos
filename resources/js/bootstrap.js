@@ -30,3 +30,4 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.$ = window.jQuery = require('jquery');
 var Swal = window.Swal = require('sweetalert2');
+window.Sortable = require('sortablejs').default

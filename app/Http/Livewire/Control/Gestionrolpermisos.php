@@ -27,7 +27,7 @@ class Gestionrolpermisos extends Component
 
     public function render()
     {   
-        $allpermisos=$this->allpermisos=permission::all();
+        $allpermisos=$this->allpermisos=permission::where('tipo','=','config')->get();
         $allroles=$this->allroles=role::where('id', '!=' , 1)->get();
         return view('livewire.control.gestionrolpermisos',compact('allpermisos','allroles'));
     }
