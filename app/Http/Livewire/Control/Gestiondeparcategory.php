@@ -33,13 +33,18 @@ class Gestiondeparcategory extends Component
     //departamento
     public function save_depart()
     {
+        $this->validate();
+
         $departamento=new departamento();
         $departamento->name=$this->name_depart;
+
         $departamento->save();
+        $this->clear();
     
     }
     public function delete_depart(departamento $departamento){
         $departamento->delete();
+        $this->clear();
     }
     public function edit_depart(departamento $departamento){
 
@@ -48,15 +53,17 @@ class Gestiondeparcategory extends Component
         $this->departamento_seleccionado=$departamento;
     }
     public function update_depart(){
-
+        $this->validate();
         $this->departamento_seleccionado->name=$this->name_depart;
         $this->departamento_seleccionado->save();
+        $this->clear();
 
     }
     //categorias
     public function vercategorias(departamento $departamento){
         $this->cuadro_cat="1";
         $this->categorias=$departamento->categorias;
+        $this->departamento_seleccionado=$departamento;
 
     }
     public function fcreate_categoria(departamento $departamento){
@@ -67,12 +74,26 @@ class Gestiondeparcategory extends Component
     }
     public function save_cat()
     {
+
+        
+        
+
+        $validatedData = $this->validate([
+
+            'name_cat' => 'required',
+
+            
+
+        ]);
+
         $categoria=new categoria();
         $categoria->name=$this->name_cat;
         $categoria->departamento_id=$this->departamento_seleccionado->id;
         $categoria->save();
         $this->categorias=$this->departamento_seleccionado->categorias;
         $this->cuadro_cat="1";
+        $this->name_cat="";
+        
     
     }
     public function delete_cat(categoria $categoria){
@@ -80,6 +101,14 @@ class Gestiondeparcategory extends Component
         $this->departamento_seleccionado=departamento::find($this->departamento_seleccionado->id);
         $this->categorias=$this->departamento_seleccionado->categorias;
     
+    }
+    public function clear(){
+
+        $this->ModeEdit='default';
+        $this->cuadro_cat='default';
+        $this->name_depart="";
+        $this->name_cat="";
+        
     }
     
 }

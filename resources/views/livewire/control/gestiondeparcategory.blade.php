@@ -1,4 +1,8 @@
-<div>
+<div> 
+    <div  class=" fixed top-0 left-0 bg-gray-200 opacity-50 h-screen  pt-56  w-full z-50"
+    wire:loading wire:target='save_depart,delete_depart,vercategorias,update_depart,delete_cat,save_cat'>
+                <img class="mx-auto h-36 w-36 my-auto"  src="{{asset('/imagenes/loading.gif')}}" alt="">
+    </div>
     <div class="mx-auto w-10/12">
         <div class=" flex justify-between w-full px-20 mb-5 h-10  ">
             <div>
@@ -12,6 +16,7 @@
                 @endcan
                
             </div>
+           
 
 
 
