@@ -39,15 +39,13 @@ class Gestionarchivos extends Component
         $file->url= 'storage/'.$this->archivo->store('archivos','public'); 
         $file->name=$this->archivo->getClientOriginalName();
         $file->extencion=$this->archivo->getClientOriginalExtension();
-<<<<<<< HEAD
-        $file->categoria_id=$this->categoria_select;
-=======
-        $file->nombre_permiso=uniqid('archivo-');
-        $file->user_id=auth()->user()->id;
->>>>>>> e5774d2b17a6ae0f8412416e4ba64b7613f36157
+        $file->categoria_id=30;
+        //$file->categoria_id=$this->categoria_select;
+       // $file->nombre_permiso=uniqid('archivo-');
+       // $file->user_id=auth()->user()->id;
         $file->save();
-        $permission=Permission::create(['tipo'=>'archivo','guard_name'=>'web','name' =>$file->nombre_permiso ,'descrip'=>'','seccion'=>'']);
-        auth()->user()->givePermissionTo($permission);
+       // $permission=Permission::create(['tipo'=>'archivo','guard_name'=>'web','name' =>$file->nombre_permiso ,'descrip'=>'','seccion'=>'']);
+       // auth()->user()->givePermissionTo($permission);
         
        
 

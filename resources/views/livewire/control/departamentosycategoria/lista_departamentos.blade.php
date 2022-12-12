@@ -19,7 +19,7 @@
 
             @endcan
             @can('depcat.delete.departamento')
-            <div><i class="bi bi-trash3 text-red-600 hover:text-red-900 cursor-pointer" wire:click='delete_depart("{{$departamento->id}}")'></i></div>
+            <div><i class="bi bi-trash3 text-red-600 hover:text-red-900 cursor-pointer" wire:click="$emit('eliminar_dep','{{$departamento->id}}')"></i></div>
             @else
                 
             @endcan

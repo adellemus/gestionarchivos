@@ -16,7 +16,7 @@ class Gestiondeparcategory extends Component
     public $categorias;
     public $cuadro_cat='default';
     public $name_cat;
-
+    protected $listeners = ['delete_depart','delete_cat'];
     protected $rules = [ 
         'name_depart'=>'required',
         
@@ -40,6 +40,7 @@ class Gestiondeparcategory extends Component
 
         $departamento->save();
         $this->clear();
+        $this->emit('alert_create_dep');
     
     }
     public function delete_depart(departamento $departamento){
@@ -51,13 +52,14 @@ class Gestiondeparcategory extends Component
         $this->ModeEdit=1;
         $this->name_depart=$departamento->name;
         $this->departamento_seleccionado=$departamento;
+        
     }
     public function update_depart(){
         $this->validate();
         $this->departamento_seleccionado->name=$this->name_depart;
         $this->departamento_seleccionado->save();
         $this->clear();
-
+        $this->emit('alert_update_dep');
     }
     //categorias
     public function vercategorias(departamento $departamento){
@@ -93,7 +95,8 @@ class Gestiondeparcategory extends Component
         $this->categorias=$this->departamento_seleccionado->categorias;
         $this->cuadro_cat="1";
         $this->name_cat="";
-        
+      
+        $this->emit('alert_create_cat');
     
     }
     public function delete_cat(categoria $categoria){

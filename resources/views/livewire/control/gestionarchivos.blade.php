@@ -70,7 +70,7 @@
     </div>
 
 
-    <div class="w-10/12 mx-auto grid grid-cols-2 mt-5 gap-3">
+{{--     <div class="w-10/12 mx-auto grid grid-cols-2 mt-5 gap-3">
         @foreach ($roles as $item)
         <div class=" h-56  border border-gray-400">
             <div class="text-center text-xl text-gray-700 w-full" >{{$item->name}}</div>
@@ -80,6 +80,6 @@
         </div>    
         @endforeach
 
-    </div>
+    </div> --}}
 
 </div>
