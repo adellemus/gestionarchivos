@@ -63,4 +63,20 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function departamentos()
+    {
+        return $this->belongsToMany('App\Models\departamento');
+    }
+    public function categorias()
+    {
+        return $this->belongsToMany('App\Models\categoria');
+    }
+    public function archivos()
+    {
+        return $this->belongsToMany('App\Models\archivo');
+    }
+
+
 }

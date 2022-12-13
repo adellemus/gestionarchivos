@@ -19,6 +19,14 @@
                     @endcan
                     
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('nav.link.panel')
+                    <x-jet-nav-link href="{{ route('Files') }}" :active="request()->routeIs('Files')">
+                        {{ __('Files') }}
+                    </x-jet-nav-link>
+                    @endcan
+                    
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

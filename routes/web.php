@@ -29,3 +29,6 @@ Route::middleware(['auth:sanctum', 'verified','ver_panel'])->get('/dashboard', f
     return view('dashboard');
 })->name('dashboard');
 //---------------------------------------
+Route::get('/files', function () {
+    return view('Files.index');
+})->name('Files');

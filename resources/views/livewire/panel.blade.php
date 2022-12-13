@@ -13,12 +13,7 @@
                     <span class="tooltip">roles y permisos</span>
                 </li>
             @endcan
-            @can('panel.archivos')
-                <li wire:click="$set('vista',3)">
-                    <i class="bi bi-filetype-pdf"></i>
-                    <span class="tooltip">archivos</span>
-                </li>
-            @endcan
+            
             {{--   <li wire:click="$set('vista',4)">
                 <i class="bi bi-printer"></i>
                 <span class="tooltip">Fax</span>
@@ -41,7 +36,7 @@
                 @break
 
                 @case(3)
-                    @livewire('control.gestionarchivos')
+                    
                 @break
 
                 @case(4)
