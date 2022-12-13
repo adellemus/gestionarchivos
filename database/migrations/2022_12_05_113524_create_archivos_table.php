@@ -25,9 +25,9 @@ class CreateArchivosTable extends Migration
         Schema::create('archivo_user', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('archivo_id')->nullable();
-            $table->foreign('archivo_id')->references('id')->on('archivos');
+            $table->foreign('archivo_id')->references('id')->on('archivos')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
     }

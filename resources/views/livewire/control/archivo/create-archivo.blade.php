@@ -6,7 +6,7 @@
         <option value="">>>seleccione<<</option>
                 @foreach ($categorias as $item)
         <option value="{{ $item->id }}">
-            {{ $item->name }}
+            {{$item->departamento->name}}-{{ $item->name }}
         </option>
         @endforeach
 

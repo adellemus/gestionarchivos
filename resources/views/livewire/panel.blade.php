@@ -13,7 +13,10 @@
                     <span class="tooltip">roles y permisos</span>
                 </li>
             @endcan
-            
+            <li wire:click="$set('vista',3)">
+                <i class="bi bi-tags"></i>
+                <span class="tooltip">Departamentos y categorias</span>
+            </li>
             {{--   <li wire:click="$set('vista',4)">
                 <i class="bi bi-printer"></i>
                 <span class="tooltip">Fax</span>
@@ -36,7 +39,7 @@
                 @break
 
                 @case(3)
-                    
+                @livewire('control.gestionperycat')
                 @break
 
                 @case(4)

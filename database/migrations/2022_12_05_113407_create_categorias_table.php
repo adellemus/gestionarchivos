@@ -24,9 +24,9 @@ class CreateCategoriasTable extends Migration
         Schema::create('categoria_user', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('categoria_id')->nullable();
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
 

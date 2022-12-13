@@ -22,10 +22,14 @@ class Gestionarchivos extends Component
         'categoria_select'=>'required',
         'archivo' => 'required', 
     ];
+    public function mount(){
+
+        $this->categorias= auth()->user()->categorias;
+    }
     public function render()
     {
         $this->archivos=archivo::all();
-        $this->categorias=categoria::all();
+        
         return view('livewire.control.gestionarchivos');
     }
     public function save()
