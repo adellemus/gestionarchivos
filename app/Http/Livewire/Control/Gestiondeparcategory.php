@@ -6,6 +6,10 @@ use Livewire\Component;
 use App\models\categoria;
 use App\models\departamento;
 use Illuminate\Support\Collection;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
 
 class Gestiondeparcategory extends Component
 {
@@ -16,14 +20,16 @@ class Gestiondeparcategory extends Component
     public $categorias;
     public $cuadro_cat='default';
     public $name_cat;
+    public $select_rol=[];
     protected $listeners = ['delete_depart','delete_cat'];
     protected $rules = [ 
         'name_depart'=>'required',
-        
+        'select_rol'=>'required',
     ];
     public function mount(){
         $this->categorias=new Collection();
         $this->categorias->push(new categoria());
+        $this->roles=role::where('name','!=','SuperUsuario')->get();
     }
     public function render()
     {   $this->departamentos=departamento::all();
@@ -37,14 +43,25 @@ class Gestiondeparcategory extends Component
 
         $departamento=new departamento();
         $departamento->name=$this->name_depart;
-
+        $permiso=new permission();
+        $permiso->name="departamento.".$departamento->name;
+        $permiso->descrip="ver - ".$departamento->name;
+        $permiso->tipo='departamento';
+        $permiso->seccion='departamento';
+        $permiso->guard_name="web";
+        $permiso->save();
+        $permiso->syncRoles($this->select_rol);
         $departamento->save();
+       
         $this->clear();
+        
         $this->emit('alert_create_dep');
     
     }
     public function delete_depart(departamento $departamento){
         $departamento->delete();
+        $permiso=permission::where('name','=',"departamento.".$departamento->name);
+        $permiso->delete();
         $this->clear();
     }
     public function edit_depart(departamento $departamento){
@@ -77,25 +94,29 @@ class Gestiondeparcategory extends Component
     public function save_cat()
     {
 
-        
-        
-
         $validatedData = $this->validate([
-
             'name_cat' => 'required',
-
-            
-
         ]);
 
         $categoria=new categoria();
         $categoria->name=$this->name_cat;
         $categoria->departamento_id=$this->departamento_seleccionado->id;
+        //crear el permiso
+        $permiso_dela_categoria=new permission();
+        $permiso_dela_categoria->name="categoria.".$categoria->name;
+        $permiso_dela_categoria->descrip="ver - ".$categoria->name;
+        $permiso_dela_categoria->tipo='categoria';
+        $permiso_dela_categoria->seccion='categoria';
+        $permiso_dela_categoria->guard_name="web";
+        $permiso_dela_categoria->save();
+        //
+        $permiso_del_depar=permission::where('name','departamento.'.$this->departamento_seleccionado->name)->first();
+        $permiso_dela_categoria->syncRoles($permiso_del_depar->roles);
         $categoria->save();
         $this->categorias=$this->departamento_seleccionado->categorias;
         $this->cuadro_cat="1";
         $this->name_cat="";
-      
+        
         $this->emit('alert_create_cat');
     
     }
@@ -103,6 +124,8 @@ class Gestiondeparcategory extends Component
         $categoria->delete();
         $this->departamento_seleccionado=departamento::find($this->departamento_seleccionado->id);
         $this->categorias=$this->departamento_seleccionado->categorias;
+        $permiso=permission::where('name','=',"categoria.".$categoria->name);
+        $permiso->delete();
     
     }
     public function clear(){

@@ -18,8 +18,10 @@ class CreateArchivosTable extends Migration
             $table->string('name');
             $table->string('nombre_permiso');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('categoria_id');
             $table->string('url');
             $table->string('extencion');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
