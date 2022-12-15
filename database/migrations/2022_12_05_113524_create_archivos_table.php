@@ -19,6 +19,8 @@ class CreateArchivosTable extends Migration
             $table->unsignedBigInteger('categoria_id');
             $table->string('url');
             $table->string('extencion');
+            $table->string('p_delete')->nullable();
+            $table->string('p_update')->nullable();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });
