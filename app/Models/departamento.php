@@ -11,7 +11,17 @@ class departamento extends Model
 
     public function categorias()
     {
+<<<<<<< HEAD
         return $this->hasMany('App\Models\categoria', 'departamento_id', 'id');
     }
+=======
+        return $this->hasMany('App\Models\categoria');
+    }
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\user');
+    }
+
+>>>>>>> archivos
 
 }

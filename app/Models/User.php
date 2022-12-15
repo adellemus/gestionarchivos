@@ -64,9 +64,24 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+<<<<<<< HEAD
     public function archivos()
     {
         return $this->hasMany('App\Models\archivo');
+=======
+
+    public function departamentos()
+    {
+        return $this->belongsToMany('App\Models\departamento');
+    }
+    public function categorias()
+    {
+        return $this->belongsToMany('App\Models\categoria');
+    }
+    public function archivos()
+    {
+        return $this->belongsToMany('App\Models\archivo');
+>>>>>>> archivos
     }
 
 

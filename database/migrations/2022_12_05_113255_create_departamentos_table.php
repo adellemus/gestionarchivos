@@ -19,6 +19,15 @@ class CreateDepartamentosTable extends Migration
             
             $table->timestamps();
         });
+
+        Schema::create('departamento_user', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('departamento_id')->nullable();
+            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->timestamps();
+        });
     }
 
     /**

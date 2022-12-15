@@ -13,6 +13,7 @@
                     <span class="tooltip">roles y permisos</span>
                 </li>
             @endcan
+<<<<<<< HEAD
             @can('panel.dep_categoria')
                 <li wire:click="$set('vista',3)">
                     <i class="bi bi-tag"></i>
@@ -25,6 +26,12 @@
                     <span class="tooltip">archivos</span>
                 </li>
             @endcan
+=======
+            <li wire:click="$set('vista',3)">
+                <i class="bi bi-tags"></i>
+                <span class="tooltip">Departamentos y categorias</span>
+            </li>
+>>>>>>> archivos
             {{--   <li wire:click="$set('vista',4)">
                 <i class="bi bi-printer"></i>
                 <span class="tooltip">Fax</span>
@@ -47,7 +54,11 @@
                 @break
 
                 @case(3)
+<<<<<<< HEAD
                 @livewire('control.gestiondeparcategory')
+=======
+                @livewire('control.gestionperycat')
+>>>>>>> archivos
                 @break
 
                 @case(4)

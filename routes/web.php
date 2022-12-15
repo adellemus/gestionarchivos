@@ -29,3 +29,12 @@ Route::middleware(['auth:sanctum', 'verified','ver_panel'])->get('/dashboard', f
     return view('dashboard');
 })->name('dashboard');
 //---------------------------------------
+
+//dashboard o panel (protegida por autentificacion y permisos)
+Route::middleware(['auth:sanctum', 'verified'])->get('/files', function () {
+    return view('Files.index');
+})->name('Files');
+//---------------------------------------
+
+
+

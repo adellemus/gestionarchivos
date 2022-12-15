@@ -1,12 +1,22 @@
 <div class="">
     <div class="w-full text-base text-center text-red-400" wire:loading wire:target='save,archivo'>cargando</div>
 
+<<<<<<< HEAD
    <select wire:model='id_departamento' wire:change='cargar_select_categoria' class="w-full h-10 p-1 border border-gray-100 my-2">
     <option value="">seleccione</option>
     @foreach ($departamentos as $departamento)
         @can("departamento.".$departamento->name)
         <option value="{{$departamento->id}}">{{$departamento->name}}</option>
         @endcan
+=======
+    <x-jet-label> Categoria </x-jet-label>
+    <select class="w-full mb-3 h-10 border border-gray-300 bg-white rounded-md p-1 pl-5" wire:model='categoria_select'>
+        <option value="">>>seleccione<<</option>
+                @foreach ($categorias as $item)
+        <option value="{{ $item->id }}">
+            {{$item->departamento->name}}-{{ $item->name }}
+        </option>
+>>>>>>> archivos
         @endforeach
     
    </select>
