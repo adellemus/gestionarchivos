@@ -5,29 +5,16 @@ namespace App\Http\Livewire\Control;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
-use App\models\archivo;
-<<<<<<< HEAD
-use App\models\departamento;
-use App\models\categoria;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Collection;
-=======
-use App\models\user;
+use App\Models\archivo;
+use App\Models\user;
 use Illuminate\Database\Eloquent\Collection;
 use App\models\categoria;
 use Spatie\Permission\Models\Permission;
->>>>>>> archivos
 
 
 class Gestionarchivos extends Component
 {
     use WithFileUploads;
-<<<<<<< HEAD
-    public $open = false ;
-    public $id_departamento;
-    public $id_categoria;
-=======
     public $usuario_unico;
    
     public $lista_de_usuario=[];
@@ -37,31 +24,16 @@ class Gestionarchivos extends Component
     public $tipo_de_permiso="usuarios";
     public $usuarios_para_compartir;
     public $vista=0;
->>>>>>> archivos
     public $archivo;
     public $archivos;
     public $accion=0;
-    public $roles;
-    public $categoria_select;
-    public $departamentos;
     public $categorias;
+    public $categoria_select;
     protected $rules = [ 
-        
+        'categoria_select'=>'required',
         'archivo' => 'required', 
     ];
     public function mount(){
-<<<<<<< HEAD
-        $this->open=false;
-        $this->categorias=new Collection();
-        $this->users=new Collection();
-
-    }
-    public function render()
-    {
-        $this->archivos=archivo::all();
-        $this->departamentos=departamento::all();
-        $this->roles=role::where('name','!=','SuperUsuario')->get();
-=======
 
         $this->categorias= auth()->user()->categorias;
         $this->usuarios_para_compartir=new Collection();
@@ -70,7 +42,6 @@ class Gestionarchivos extends Component
     {
         $this->archivos=auth()->user()->archivos;
         
->>>>>>> archivos
         return view('livewire.control.gestionarchivos');
     }
     public function save()
@@ -82,15 +53,6 @@ class Gestionarchivos extends Component
         $file->url= 'storage/'.$this->archivo->store('archivos','public'); 
         $file->name=$this->archivo->getClientOriginalName();
         $file->extencion=$this->archivo->getClientOriginalExtension();
-<<<<<<< HEAD
-        $file->categoria_id=$this->id_categoria;
-        
-        $file->nombre_permiso=uniqid('archivo-');
-        $file->user_id=auth()->user()->id;
-        $file->save();
-        $permission=Permission::create(['tipo'=>'archivo','guard_name'=>'web','name' =>$file->nombre_permiso ,'descrip'=>'','seccion'=>'']);
-         auth()->user()->givePermissionTo($permission);
-=======
         $file->categoria_id=$this->categoria_select;
         //permiso de eliminar
         $permiso_delete=new Permission();
@@ -111,17 +73,9 @@ class Gestionarchivos extends Component
        auth()->user()->givePermissionTo($permiso_update);
        auth()->user()->givePermissionTo($permiso_delete);
 
->>>>>>> archivos
         
-       
 
     }
-<<<<<<< HEAD
-    public function cargar_select_categoria(){
-        $this->categorias=categoria::where('departamento_id','=',$this->id_departamento)->get();
-        
-    }
-=======
     public function dar_permiso(archivo $archivo){
         $this->archivo_select=$archivo;
         $this->vista_permisos=1;
@@ -164,7 +118,7 @@ class Gestionarchivos extends Component
                         if ($usuario->hasPermissionTo($this->archivo_select->p_delete)) {
                             $this->lista_de_usuario[$key]['p_delete']=$this->archivo_select->p_delete;
                         }
-                    }
+                    
                 break;
                 case 'usuarios':
                     $this->usuarios_para_compartir=new Collection();
@@ -339,5 +293,4 @@ class Gestionarchivos extends Component
 
         }
 
->>>>>>> archivos
 }
